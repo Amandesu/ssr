@@ -1,0 +1,51 @@
+{
+  "name": "nodecli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-decorators": "^7.6.0",
+    "@babel/plugin-proposal-export-default-from": "^7.5.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.6.0",
+    "@babel/preset-react": "^7.6.3",
+    "babel-loader": "^8.0.6",
+    "console": "^0.7.2",
+    "cross-env": "^6.0.3",
+    "fs-extra": "^8.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "ioredis": "^4.14.1",
+    "koa": "^2.8.1",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "node-fetch": "^2.6.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-redux": "^7.1.1",
+    "react-router": "^5.1.2",
+    "react-router-config": "^5.1.1",
+    "redis": "^2.8.0",
+    "redis-sentinel": "^0.3.3",
+    "redux": "^4.0.4",
+    "redux-actions": "^2.6.5",
+    "webpack": "^4.41.2",
+    "webpack-dev-server": "^3.9.0",
+    "webpack-parallel-uglify-plugin": "^1.1.2"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-async-to-generator": "^7.5.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node scripts/compile.js",
+    "babel-ss": "cross-env  BABEL_ENV=node babel server -d dist/server",
+    "babel-cs": "cross-env  BABEL_ENV=node babel src -d dist/src",
+    "dev": "node scripts/client.dev.js",
+    "server": "npm run babel-cs && npm run babel-ss && node dist/server/app.js",
+    "prod-cs": "node scripts/client.compile.js",
+    "server-compile": "node scripts/server.compile.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
