@@ -7,7 +7,7 @@ const compiler = Webpack(webpackConfig);
 
 const server = new WebpackDevServer(compiler, {
   proxy: {
-    "/city": {
+    "/": {
       target: 'http://localhost:3001',
       changeOrigin: true
     }
