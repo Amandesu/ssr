@@ -33,7 +33,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             inject: true,
-            template: path.resolve(process.cwd(), "static/index.html")
+            template: path.resolve(process.cwd(), "public/index.html")
         }),
         new webpack.HotModuleReplacementPlugin()
     ]

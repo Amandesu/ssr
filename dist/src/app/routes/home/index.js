@@ -13,7 +13,7 @@ var _redux = require("redux");
 
 var _reactRedux = require("react-redux");
 
-var _fetchData = _interopRequireDefault(require("../utils/fetchData"));
+var _fetchData = _interopRequireDefault(require("../../../utils/fetchData"));
 
 var _dec, _class, _dec2, _class2;
 
@@ -53,7 +53,7 @@ let Home = (_dec2 = (0, _reactRedux.connect)(state => ({
 
   render() {
     const Home = this.props.Home;
-    return _react.default.createElement("div", null, _react.default.createElement("div", null, Home.title), Home.list.length ? Home.list.map((item, index) => {
+    return _react.default.createElement("div", null, _react.default.createElement("div", null, Home.title), Home.list.length > 0 ? Home.list.map((item, index) => {
       return _react.default.createElement("div", {
         key: index
       }, item.title);

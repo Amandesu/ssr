@@ -16,7 +16,7 @@ module.exports = {
     output: {
         // Add /* filename */ comments to generated require()s in the output.
         pathinfo: true,
-        path: path.resolve(process.cwd(), "static"),
+        path: path.resolve(process.cwd(), "server/static"),
         filename: "index.js"
     },
     module: {

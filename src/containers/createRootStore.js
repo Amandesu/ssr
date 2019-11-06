@@ -38,7 +38,7 @@ const rootReduces = combineReducers({
        
     )
 })
-export default () =>{
-    const store = createStore(rootReduces)
+export default (initData) =>{
+    const store = createStore(rootReduces, initData || {})
     return store;
 }

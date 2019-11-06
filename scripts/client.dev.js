@@ -6,7 +6,12 @@ const compiler = Webpack(webpackConfig);
 
 
 const server = new WebpackDevServer(compiler, {
-    
+  proxy: {
+    "/city": {
+      target: 'http://localhost:3001',
+      changeOrigin: true
+    }
+},
 });
 
 server.listen(8080, '127.0.0.1', () => {

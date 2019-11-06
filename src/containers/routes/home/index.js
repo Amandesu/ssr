@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import { createStore , combineReducers } from 'redux';
 import { Provider , connect} from 'react-redux';
 
-import fetchData from '../utils/fetchData';
+import fetchData from '../../../utils/fetchData';
 
 @connect(
     (state) => ({
@@ -39,11 +39,11 @@ export default class Home extends React.Component {
         return (
             <div>
                 <div>{Home.title}</div>
-                {Home.list.map((item, index) => {
+                {Home.list.length >0 ?Home.list.map((item, index) => {
                     return (
                         <div key={index}>{item.title}</div>
                     )
-                })}
+                }):<div>loading</div>}
                <Child /> 
             </div>
         )
