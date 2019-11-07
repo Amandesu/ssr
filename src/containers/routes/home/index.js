@@ -11,7 +11,6 @@ import fetchData from '../../../utils/fetchData';
     }),
     (dispatch) => ({
         setList: (list) => dispatch({type:"HOME_LIST",data:list}),
-        addApi:(p) => dispatch({type:"APP_ADDAPI",data:p})
     })
 )
 export default class Home extends React.Component {
@@ -19,78 +18,32 @@ export default class Home extends React.Component {
         super(props);
     }
     static getInitialProps(props){
-
-        let p = fetchData({
-            url:"http://localhost:3001/home/getList",
-            method: 'POST'
+        fetchData({
+            method:"GET",
+            url:"mall.film-ticket.film.list",
+            data:{
+                cityId: 110100,
+                pageNum: 1,
+                pageSize: 10,
+                type: 1
+            }
         }).then(res => {
-            props.setList(res);
+        //    props.setList(res);
         })
-        props.addApi(p);
     }
-    UNSAFE_componentWillMount(){
-        // 服务端请求
-        //if (global.__SERVER__) {
-            Home.getInitialProps(this.props)
-        //} 
+    componentWillMount(){
+    }
+    componentDidMount(){
+        Home.getInitialProps(this.props)
     }
     render(){
         const Home = this.props.Home;
         return (
             <div>
                 <div>{Home.title}</div>
-                {Home.list.length >0 ?Home.list.map((item, index) => {
-                    return (
-                        <div key={index}>{item.title}</div>
-                    )
-                }):<div>loading</div>}
-               <Child /> 
             </div>
         )
     }
 }
-
-@connect(
-    (state) => ({
-        Child:state.child
-    }),
-    (dispatch) => ({
-        setList: (list) => dispatch({type:"Child_LIST",data:list}),
-        addApi:(p) => dispatch({type:"APP_ADDAPI",data:p})
-    })
-)
-class Child extends React.Component {
-    constructor(props){
-        super(props);
-    }
-    static getInitialProps(props){
-        let p = fetchData({
-            url:"http://localhost:3001/home/getChild",
-            method: 'POST'
-        }).then(res => {
-            props.setList(res);
-        })
-
-        props.addApi(p);
-    }
-    UNSAFE_componentWillMount(){
-        // 服务端请求
-        //if (global.__SERVER__) {
-            Child.getInitialProps(this.props)
-        //} 
-    }
-    render(){
-        const Child = this.props.Child;
-        return (
-            <div>
-                {Child.list.map((item, index) => {
-                    return (
-                        <div key={index}>{item.title}</div>
-                    )
-                })}
-            </div>
-        )
-    }
-} 
 
 
