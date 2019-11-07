@@ -1,43 +1,8 @@
 import { createStore , combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
-const rootReduces = combineReducers({
-    "app":handleActions(
-        {
-            ["APP_ADDAPI"]: (state, action )=> {
-                return {...state, queue:state.queue.concat(action.data)};
-            }
-        },
-        {
-            title:"app",
-            queue:[]
-        }
-       
-    ),
-    "home":handleActions(
-        {
-            ["HOME_LIST"]: (state, action )=> {
-                return {...state, list:action.data};
-            }
-        },
-        {
-            title:"home",
-            list:[]
-        }
-       
-    ),
-    "child":handleActions(
-        {
-            ["Child_LIST"]: (state, action )=> {
-                return {...state, list:action.data};
-            }
-        },
-        {
-            title:"child",
-            list:[]
-        }
-       
-    )
-})
+import rootReduces from "./reduces";
+
+// 如果是服务端渲染要数据脱水
 export default (initData) =>{
     const store = createStore(rootReduces, initData || {})
     return store;
