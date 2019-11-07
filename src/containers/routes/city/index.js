@@ -1,9 +1,7 @@
 import React from 'react';
-import { Provider , connect} from 'react-redux';
+import { connect} from 'react-redux';
 import fetchData from '../../../utils/fetchData';
-
 import { changeData } from '../../reduces/city';
-
 
 @connect(
     (state) => ({
@@ -17,9 +15,7 @@ export default class City extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            text: "",
-            cities: [],
-            hotCitys:[],
+            text: ""
         }
     }
     static getInitialProps(props){
@@ -34,7 +30,6 @@ export default class City extends React.Component {
         console.log(this.props)
         City.getInitialProps(this.props)
             .then(response => {
-
                 let cities = response.data.cities;
                 let arrayList = Array(26).fill(0).map(() => []);
                 let hotCitys = [];
@@ -50,9 +45,6 @@ export default class City extends React.Component {
                     cities:arrayList,
                     hotCitys
                 })
-                /* this.setState({
-                    
-                }) */
             })
             .catch(err => {
                 console.log(err)
@@ -129,8 +121,6 @@ export default class City extends React.Component {
                             style={{ width: 20, height: 20 }}
                         />
                     </div>
-                   
-                
                     <div style={{ flex: 7, alignItems: "center", justifyContent: "center", display:"flex" }}>
                         <span style={{ fontSize: 17 }}>当前城市</span></div>
                     <div style={{ flex: 1.5 }}></div>
