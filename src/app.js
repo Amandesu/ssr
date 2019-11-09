@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider , connect} from 'react-redux';
-import { BrowserRouter  } from 'react-router-dom';
+import { BrowserRouter, Route  } from 'react-router-dom';
 import Container from './containers';
 import createRootStore from './containers/createRootStore';
 export const store = createRootStore();

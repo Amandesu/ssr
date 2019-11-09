@@ -18,9 +18,16 @@ export default handleActions(
     },
     {
         title:"city",
+        city:{
+            cityId: 110100,
+            isHot: 1   ,     
+            name: "北京",
+        },
+        //hotCity:""
         cities: [],
         hotCitys:[],
         list:[]
     }
 )
 export const changeData = dispatch => (data) =>dispatch({type:CHANGE_DATA, data})
+

@@ -9,41 +9,13 @@ var _redux = require("redux");
 
 var _reduxActions = require("redux-actions");
 
-const rootReduces = (0, _redux.combineReducers)({
-  "app": (0, _reduxActions.handleActions)({
-    ["APP_ADDAPI"]: (state, action) => {
-      return { ...state,
-        queue: state.queue.concat(action.data)
-      };
-    }
-  }, {
-    title: "app",
-    queue: []
-  }),
-  "home": (0, _reduxActions.handleActions)({
-    ["HOME_LIST"]: (state, action) => {
-      return { ...state,
-        list: action.data
-      };
-    }
-  }, {
-    title: "home",
-    list: []
-  }),
-  "child": (0, _reduxActions.handleActions)({
-    ["Child_LIST"]: (state, action) => {
-      return { ...state,
-        list: action.data
-      };
-    }
-  }, {
-    title: "child",
-    list: []
-  })
-});
+var _reduces = _interopRequireDefault(require("./reduces"));
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// 如果是服务端渲染要数据脱水
 var _default = initData => {
-  const store = (0, _redux.createStore)(rootReduces, initData || {});
+  const store = (0, _redux.createStore)(_reduces.default, initData || {});
   return store;
 };
 

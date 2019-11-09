@@ -18,11 +18,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _default = () => _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactRouterDom.Route, {
   path: "/",
   exact: true,
-  render: () => _react.default.createElement(_home.default, null)
+  render: props => _react.default.createElement(_home.default, props)
 }), _react.default.createElement(_reactRouterDom.Route, {
   path: "/city",
   exact: true,
-  render: () => _react.default.createElement(_city.default, null)
+  render: props => _react.default.createElement(_city.default, props)
 }));
 
 exports.default = _default;

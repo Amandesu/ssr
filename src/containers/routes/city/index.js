@@ -50,7 +50,7 @@ export default class City extends React.Component {
                 console.log(err)
             })
     }
-    renderHotCity(){
+    renderHotCity = () => {
         const cityStore = this.props.cityStore
         let hotCitys = cityStore.hotCitys;
         let splitArr = [], temp = [];
@@ -69,7 +69,13 @@ export default class City extends React.Component {
                     <div style={{ height: 30, flexDirection: "row", justifyContent: "space-between", marginBottom: 15, display:"flex" }}>
                         {hotCitys.map((city) => {
                             return (
-                                <div style={{ width: 100, marginHorizontal: 10, backgroundColor: "#f4f4f4", justifyContent: "center", alignItems: "center", display:"flex" }}>
+                                <div style={{ width: 100, marginHorizontal: 10, backgroundColor: "#f4f4f4", justifyContent: "center", alignItems: "center", display:"flex" }} onClick={() => {
+                                    this.props.changeData({
+                                        city
+                                    })
+                                    this.props.history.push("/")
+                                    //console.log(this.props)
+                                }}>
                                     <span style={{ color: "#191a1b", fontSize: 14 }}>{city.name}</span>
                                 </div>
                             )
