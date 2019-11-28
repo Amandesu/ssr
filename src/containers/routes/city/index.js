@@ -9,6 +9,9 @@ import { changeData } from '../../reduces/city';
     }),
     (dispatch) => ({
         changeData: changeData(dispatch),
+        changeCity: (city) => {
+            dispatch({type:"CITY_CHANGE_CITY",city})
+        }
     })
 )
 export default class City extends React.Component {
@@ -41,6 +44,7 @@ export default class City extends React.Component {
                     let c = city.pinyin.charCodeAt(0)-97;
                     arrayList[c].push(city);
                 })
+                console.log(arrayList);
                 this.props.changeData({
                     cities:arrayList,
                     hotCitys
@@ -66,14 +70,12 @@ export default class City extends React.Component {
             <div>
                 {splitArr.map(hotCitys => {
                     return (
-                    <div style={{ height: 30, flexDirection: "row", justifyContent: "space-between", marginBottom: 15, display:"flex" }}>
+                    <div key={hotCitys.cityId} style={{ height: 30, flexDirection: "row", justifyContent: "space-between", marginBottom: 15, display:"flex" }}>
                         {hotCitys.map((city) => {
                             return (
-                                <div style={{ width: 100, marginHorizontal: 10, backgroundColor: "#f4f4f4", justifyContent: "center", alignItems: "center", display:"flex" }} onClick={() => {
-                                    this.props.changeData({
-                                        city
-                                    })
-                                    this.props.history.push("/")
+                                <div key={city.cityId} style={{ width: 100, marginHorizontal: 10, backgroundColor: "#f4f4f4", justifyContent: "center", alignItems: "center", display:"flex" }} onClick={() => {
+                                    this.props.changeCity(city);
+                                    cityStore.from ? this.props.history.push("/") : this.props.history.push("/cinema")
                                     //console.log(this.props)
                                 }}>
                                     <span style={{ color: "#191a1b", fontSize: 14 }}>{city.name}</span>
@@ -101,8 +103,11 @@ export default class City extends React.Component {
                         <div style={styles.sublist}>
                             {sublist.map((city) => {
                                 return (
-                                    <div>
-                                        <div style={styles.subtitle}>
+                                    <div  key={city.cityId}>
+                                        <div style={styles.subtitle} onClick = {() => {
+                                            this.props.changeCity(city);
+                                            cityStore.from ? this.props.history.push("/") : this.props.history.push("/cinema")
+                                        }}>
                                             <span style={{color:"#191a1b",fontSize:14}}>{city.name}</span>
                                         </div>
                                     </div>
@@ -123,6 +128,7 @@ export default class City extends React.Component {
                     
                     <div style={{ flex: 1.5, alignItems: "center", marginLeft: 10, display:"flex" }}>
                         <img
+                            onClick={() => {props.cityStore.from ? props.history.push("/") : props.history.push("/cinema")}}
                             src={require("../../images/delete.png")}
                             style={{ width: 20, height: 20 }}
                         />

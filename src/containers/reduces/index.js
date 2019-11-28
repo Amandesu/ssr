@@ -1,11 +1,13 @@
 import { createStore , combineReducers } from 'redux';
 import city from "./city";
 import home from "./home";
+import cinema from "./cinema";
 
 
 export default combineReducers({
     home,
-    city
+    city,
+    cinema
 })
 
 

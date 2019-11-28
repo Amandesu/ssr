@@ -22,7 +22,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 let City = (_dec = (0, _reactRedux.connect)(state => ({
   cityStore: state.city
 }), dispatch => ({
-  changeData: (0, _city.changeData)(dispatch)
+  changeData: (0, _city.changeData)(dispatch),
+  changeCity: city => {
+    dispatch({
+      type: "CITY_CHANGE_CITY",
+      city
+    });
+  }
 })), _dec(_class = (_temp = class City extends _react.default.Component {
   constructor(props) {
     super(props);
@@ -43,6 +49,7 @@ let City = (_dec = (0, _reactRedux.connect)(state => ({
       temp.length && splitArr.push(temp);
       return _react.default.createElement("div", null, splitArr.map(hotCitys => {
         return _react.default.createElement("div", {
+          key: hotCitys.cityId,
           style: {
             height: 30,
             flexDirection: "row",
@@ -52,6 +59,7 @@ let City = (_dec = (0, _reactRedux.connect)(state => ({
           }
         }, hotCitys.map(city => {
           return _react.default.createElement("div", {
+            key: city.cityId,
             style: {
               width: 100,
               marginHorizontal: 10,
@@ -61,10 +69,8 @@ let City = (_dec = (0, _reactRedux.connect)(state => ({
               display: "flex"
             },
             onClick: () => {
-              this.props.changeData({
-                city
-              });
-              this.props.history.push("/"); //console.log(this.props)
+              this.props.changeCity(city);
+              cityStore.from ? this.props.history.push("/") : this.props.history.push("/cinema"); //console.log(this.props)
             }
           }, _react.default.createElement("span", {
             style: {
@@ -105,6 +111,7 @@ let City = (_dec = (0, _reactRedux.connect)(state => ({
         let c = city.pinyin.charCodeAt(0) - 97;
         arrayList[c].push(city);
       });
+      console.log(arrayList);
       this.props.changeData({
         cities: arrayList,
         hotCitys
@@ -131,8 +138,14 @@ let City = (_dec = (0, _reactRedux.connect)(state => ({
       }, _react.default.createElement("span", null, String.fromCharCode(index + 65))), _react.default.createElement("div", {
         style: styles.sublist
       }, sublist.map(city => {
-        return _react.default.createElement("div", null, _react.default.createElement("div", {
-          style: styles.subtitle
+        return _react.default.createElement("div", {
+          key: city.cityId
+        }, _react.default.createElement("div", {
+          style: styles.subtitle,
+          onClick: () => {
+            this.props.changeCity(city);
+            cityStore.from ? this.props.history.push("/") : this.props.history.push("/cinema");
+          }
         }, _react.default.createElement("span", {
           style: {
             color: "#191a1b",
@@ -160,6 +173,9 @@ let City = (_dec = (0, _reactRedux.connect)(state => ({
         display: "flex"
       }
     }, _react.default.createElement("img", {
+      onClick: () => {
+        props.cityStore.from ? props.history.push("/") : props.history.push("/cinema");
+      },
       src: require("../../images/delete.png"),
       style: {
         width: 20,

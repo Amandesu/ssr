@@ -5,6 +5,8 @@ const prefix = "CITY"
 
 const SET_LIST = `${prefix}_SET_LIST`;
 const CHANGE_DATA = `${prefix}_CHANGE_DATA`;
+const CHANGE_CITY = `${prefix}_CHANGE_CITY`;
+const CITY_FROM = `${prefix}_FROM`;
 
 
 export default handleActions(
@@ -14,6 +16,12 @@ export default handleActions(
         },
         [CHANGE_DATA]:(state, action={}) => {
             return {...state, ...action.data};
+        },
+        [CHANGE_CITY]:(state, action={}) => {
+            return {...state, city: action.city};
+        },
+        [CITY_FROM]:(state,action) =>{
+            return {...state,from:action.from}
         }
     },
     {
@@ -23,10 +31,11 @@ export default handleActions(
             isHot: 1   ,     
             name: "北京",
         },
-        //hotCity:""
+        //hotCity:"" from: 城市选择ture跳转首页 false跳转cinema
         cities: [],
         hotCitys:[],
-        list:[]
+        list:[],
+        from: true
     }
 )
 export const changeData = dispatch => (data) =>dispatch({type:CHANGE_DATA, data})

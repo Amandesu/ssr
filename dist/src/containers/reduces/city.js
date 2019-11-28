@@ -13,6 +13,8 @@ var _range = require("rxjs/internal/observable/range");
 const prefix = "CITY";
 const SET_LIST = `${prefix}_SET_LIST`;
 const CHANGE_DATA = `${prefix}_CHANGE_DATA`;
+const CHANGE_CITY = `${prefix}_CHANGE_CITY`;
+const CITY_FROM = `${prefix}_FROM`;
 
 var _default = (0, _reduxActions.handleActions)({
   [SET_LIST]: (state, action) => {
@@ -24,6 +26,16 @@ var _default = (0, _reduxActions.handleActions)({
     return { ...state,
       ...action.data
     };
+  },
+  [CHANGE_CITY]: (state, action = {}) => {
+    return { ...state,
+      city: action.city
+    };
+  },
+  [CITY_FROM]: (state, action) => {
+    return { ...state,
+      from: action.from
+    };
   }
 }, {
   title: "city",
@@ -32,10 +44,11 @@ var _default = (0, _reduxActions.handleActions)({
     isHot: 1,
     name: "北京"
   },
-  //hotCity:""
+  //hotCity:"" from: 城市选择ture跳转首页 false跳转cinema
   cities: [],
   hotCitys: [],
-  list: []
+  list: [],
+  from: true
 });
 
 exports.default = _default;
