@@ -200,8 +200,13 @@ let Home = (_dec = (0, _reactRedux.connect)(state => ({
     } = this.props.homeStore;
     return list.map(item => _react.default.createElement("li", {
       onClick: () => {
-        this.props.setFilmID(item.filmId);
-        this.props.history.push('/filmsDetail');
+        //this.props.setFilmID(item.filmId);
+        this.props.history.push({
+          pathname: '/filmsDetail',
+          state: {
+            filmId: item.filmId
+          }
+        });
       },
       key: item.filmId,
       style: style.filmItem

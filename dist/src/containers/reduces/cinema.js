@@ -30,7 +30,6 @@ const defaultState = {
   films: [],
   filmDates: [],
   num: 0,
-  filmId: 4957,
   filmContent: {}
 };
 
@@ -71,11 +70,6 @@ var _default = (state = defaultState, action) => {
     case SET_NUM:
       return { ...state,
         num: action.num
-      };
-
-    case SET_FILM_ID:
-      return { ...state,
-        filmId: action.ID
       };
 
     case SET_FILM_CONTENT:

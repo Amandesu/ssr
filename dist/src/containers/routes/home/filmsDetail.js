@@ -38,7 +38,7 @@ class FilmsDetail extends _react.Component {
   }
 
   componentDidMount() {
-    this.getFilmContent(this.props.cinemaStore.filmId);
+    this.getFilmContent(this.props.location.state.filmId);
   }
 
   renderActors(actors) {
@@ -91,8 +91,8 @@ class FilmsDetail extends _react.Component {
   }
 
   render() {
-    console.log(this.props.cinemaStore.filmId);
-    console.log(this.props.cinemaStore.filmContent);
+    //console.log(this.props.location.state);
+    //console.log(this.props.cinemaStore.filmContent);
     const {
       filmContent
     } = this.props.cinemaStore;
