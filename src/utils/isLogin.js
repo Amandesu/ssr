@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 
-const isLogin = true;
+const isLogin = false;
 
-const login = (View) => {
+export default (View) => {
     return class extends Component {
         render() {
             if(!isLogin) {
@@ -16,4 +16,3 @@ const login = (View) => {
         }
     }
 }
-export default login;

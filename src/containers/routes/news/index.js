@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import fetchData from '../../../utils/fetchData';
-import login from '../login';
+import isLogin from '../../../utils/isLogin';
 
-const News = login(
-class extends Component {
+@isLogin
+class News extends Component {
     constructor(props) {
         super(props);
         this.getInitialProps(this);
@@ -64,5 +64,4 @@ class extends Component {
         )
     }
 } 
-);
 export default News;

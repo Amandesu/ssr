@@ -4,6 +4,7 @@ import City from "./routes/city"
 import Home from "./routes/home/"
 import Cinema from "./routes/cinema";
 import MyInfo from "./routes/myInfo";
+import Login from "./routes/myInfo/login";
 import News from "./routes/news";
 import Search from "./routes/cinema/search";
 import SelectFilms from "./routes/cinema/selectFilms";
@@ -17,5 +18,6 @@ export default () => <React.Fragment>
     <Route path="/cinema/search" exact render={(props) => <Search {...props}/> }/>
     <Route path="/cinema/selectFilms" exact render={(props) => <SelectFilms {...props}/> }/>
     <Route path="/myInfo" exact render={(props) => <MyInfo {...props}/> }/>
+    <Route path="/myInfo/login" exact render={(props) => <Login {...props}/> }/>
     <Route path="/news" exact render={(props) => <News {...props}/> }/>
 </React.Fragment>
